@@ -21,7 +21,7 @@ jobs:
           ref: update-conformance-test-reports
           fetch-depth: 0
       - name: Merge latest changes
-        run: git rebase main
+        run: git rebase origin/main
       - name: Run conformance tests
         uses: gradle/gradle-build-action@v2
         with:
