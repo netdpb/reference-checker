@@ -1,0 +1,43 @@
+name: Update conformance test reports
+
+on:
+  repository_dispatch:
+    types: [update-conformance-test-reports]
+  workflow_dispatch: # for testing this workflow
+
+jobs:
+  update:
+    name: Update conformance test reports
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Check out the code
+        uses: actions/checkout@v3
+        with:
+          ref: update-conformance-test-reports
+      - name: Merge latest changes
+        run: git pull main --rebase
+      - name: Run conformance tests
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: conformanceTest conformanceTestOnSamples
+        env:
+          JSPECIFY_CONFORMANCE_TEST_MODE: write
+      - name: Did the report change?
+        id: check-report-status
+        run: git status --porcelain tests/ConformanceTest*-report.txt | egrep -q '^M'
+      - name: Create or Update PR
+        if: steps.check-report-status.outcome == 'success'
+        run: |
+          git commit -m "Update conformance test reports." tests/ConformanceTest*-report.txt
+          git push
+          if gh pr list --head "${branch}" --state open | egrep -q 'no pull requests'; then
+            gh pr create --base main --title "Update conformance test reports."  --body ""
+          fi
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
