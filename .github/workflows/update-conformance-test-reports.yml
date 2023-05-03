@@ -39,7 +39,7 @@ jobs:
           JSPECIFY_CONFORMANCE_TEST_MODE: write
       - name: Create or Update PR
         run: |
-          if git status --porcelain tests/ConformanceTest*-report.txt | egrep -q '^M'; then
+          if git status --porcelain tests/ConformanceTest*-report.txt | egrep -q '^ M '; then
             git commit -m "Update conformance test reports." tests/ConformanceTest*-report.txt
             git push
             if gh pr list --head "${branch}" --state open | egrep -q 'no pull requests'; then
