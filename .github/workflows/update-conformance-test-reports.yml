@@ -24,7 +24,7 @@ jobs:
       - name: Merge latest changes
         run: git rebase origin/main
         working-directory: reference-checker
-      - name: Check out JSpecify
+      - name: Check out conformance test input files
         uses: actions/checkout@v3
         with:
           repository: jspecify/jspecify
