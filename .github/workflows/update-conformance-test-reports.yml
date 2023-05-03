@@ -37,17 +37,14 @@ jobs:
           build-root-directory: reference-checker
         env:
           JSPECIFY_CONFORMANCE_TEST_MODE: write
-      - name: Did the report change?
-        id: check-report-status
-        run: git status --porcelain tests/ConformanceTest*-report.txt | egrep -q '^M'
-        working-directory: reference-checker
       - name: Create or Update PR
-        if: steps.check-report-status.outcome == 'success'
         run: |
-          git commit -m "Update conformance test reports." tests/ConformanceTest*-report.txt
-          git push
-          if gh pr list --head "${branch}" --state open | egrep -q 'no pull requests'; then
-            gh pr create --base main --title "Update conformance test reports."  --body ""
+          if git status --porcelain tests/ConformanceTest*-report.txt | egrep -q '^M'; then
+            git commit -m "Update conformance test reports." tests/ConformanceTest*-report.txt
+            git push
+            if gh pr list --head "${branch}" --state open | egrep -q 'no pull requests'; then
+              gh pr create --base main --title "Update conformance test reports."  --body ""
+            fi
           fi
         working-directory: reference-checker
         shell: bash
