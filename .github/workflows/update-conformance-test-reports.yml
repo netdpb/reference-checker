@@ -5,6 +5,8 @@ on:
     types: [update-conformance-test-reports]
   workflow_dispatch: # for testing this workflow
 
+permissions: write-all
+
 jobs:
   update:
     name: Update conformance test reports
