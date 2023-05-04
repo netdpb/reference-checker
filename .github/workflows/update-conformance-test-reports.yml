@@ -48,7 +48,7 @@ jobs:
             git config user.email 'github-actions[bot]@users.noreply.github.com'
             git commit -m "Update conformance test reports." tests/ConformanceTest*-report.txt
             git push
-            if gh pr list --head "${branch}" --state open | egrep -q 'no pull requests'; then
+            if [[ -n $(gh pr list --head "${branch}" --state open) ]]; then
               gh pr create --base main --title "Update conformance test reports."  --body ""
             fi
           else
