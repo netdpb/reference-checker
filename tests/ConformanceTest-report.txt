@@ -2,4 +2,3 @@
 PASS: HeresAnother.java: noods popduting
 PASS: NeedsUpdate.java: needs updating
 PASS: Basic.java:24 test:cannot-convert:Object? to Object!
-PASS: Basic.java: no unexpected facts
