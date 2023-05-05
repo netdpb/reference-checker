@@ -1,3 +1,4 @@
 # 2 pass; 0 fail; 2 total; 100.0% score
+PASS: StrongBad.java:123: head asplode!
 PASS: Basic.java:24 test:cannot-convert:Object? to Object!
 PASS: Basic.java: no unexpected facts
