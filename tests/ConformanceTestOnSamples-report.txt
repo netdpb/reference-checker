@@ -13,6 +13,12 @@ FAIL: ArraySubtype.java:44 jspecify_nullness_mismatch
 FAIL: ArraySubtype.java: no unexpected facts
 FAIL: AssignmentAsExpression.java: no unexpected facts
 FAIL: AugmentedInferenceAgreesWithBaseInference.java:35 jspecify_nullness_mismatch
+FAIL: AugmentedInferenceAgreesWithBaseInference.java: no unexpected facts
+FAIL: BoundedTypeVariableReturn.java:27 jspecify_nullness_mismatch
+FAIL: BoundedTypeVariableReturn.java:32 jspecify_nullness_mismatch
+FAIL: BoundedTypeVariableReturn.java: no unexpected facts
+FAIL: CaptureAsInferredTypeArgument.java:51 jspecify_nullness_mismatch
+FAIL: CaptureAsInferredTypeArgument.java:53 jspecify_nullness_mismatch
 FAIL: CaptureAsInferredTypeArgument.java:61 jspecify_nullness_mismatch
 FAIL: CaptureAsInferredTypeArgument.java:63 jspecify_nullness_mismatch
 FAIL: CaptureAsInferredTypeArgument.java: no unexpected facts
