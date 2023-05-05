@@ -50,7 +50,7 @@ jobs:
           if [[ -n $(git status --porcelain tests/ConformanceTest*-report.txt) ]]; then
             git commit -m "Update conformance test reports." tests/ConformanceTest*-report.txt
             git push
-            if [[ -n $(gh pr list --head "${branch}" --state open) ]]; then
+            if [[ -z $(gh pr list --head "${branch}" --state open) ]]; then
               gh pr create --base main --title "Update conformance test reports."  --body ""
             fi
           else
