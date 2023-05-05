@@ -1,5 +1,5 @@
 # 28 pass; 541 fail; 569 total; 4.9% score
-FAIL: NeedsUpdate.java: needs updating
+PASS: NeedsUpdate.java: needs updating
 FAIL: AnnotatedInnerOfNonParameterized.java: no unexpected facts
 FAIL: AnnotatedInnerOfParameterized.java: no unexpected facts
 FAIL: AnnotatedReceiver.java: no unexpected facts
