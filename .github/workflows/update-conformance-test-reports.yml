@@ -28,6 +28,8 @@ jobs:
       - name: Merge latest changes
         run: git rebase origin/main
         working-directory: reference-checker
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Check out conformance test input files
         uses: actions/checkout@v3
         with:
