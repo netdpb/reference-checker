@@ -61,6 +61,4 @@ jobs:
             if [[ -z $(gh pr list --head "${branch}" --state open) ]]; then
               gh pr create --base main --title "Update conformance test reports."  --body ""
             fi
-          else
-            echo "No conformance test updates found."
           fi
