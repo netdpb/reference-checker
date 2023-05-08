@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GIT_COMMITTER_NAME: update-conformance-test-reports[bot]
-      GIT_COMMITTER_EMAIL: update-conformance-test-reports[bot]@users.noreply.github.com
       branch: update-conformance-test-reports
     defaults:
       run:
@@ -39,6 +37,8 @@ jobs:
           path: reference-checker
       - name: Create or update the Reference Checker ${{ env.branch }} branch
         run: |
+          git config user.name 'update-conformance-test-reports[bot]'
+          git config user.email 'update-conformance-test-reports[bot]@users.noreply.github.com'
           if git checkout "${branch}"; then
             git merge -X theirs origin/main
             git push
