@@ -43,7 +43,7 @@ jobs:
             git merge -X theirs origin/main
             git push
           else
-            git checkout -b "${branch}"
+            git checkout -b "${branch}" --track=inherit
           fi
       - name: Run the Reference Checker conformance tests
         uses: gradle/gradle-build-action@v2
