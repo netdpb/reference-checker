@@ -27,7 +27,7 @@ jobs:
       - name: Check out JSpecify
         uses: actions/checkout@v3
         with:
-          repository: jspecify/jspecify
+          repository: netdpb/jspecify
           ref: main
           path: jspecify
       - name: Check out the Reference Checker
